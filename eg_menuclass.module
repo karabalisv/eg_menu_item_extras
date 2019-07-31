@@ -1,0 +1,30 @@
+<?php
+
+use \Drupal\Core\Entity\EntityTypeInterface;
+use \Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function eg_menuclass_entity_base_field_info(EntityTypeInterface $entity_type) {
+
+  $fields = [];
+
+  if ($entity_type->id() == 'menu_link_content') {
+
+    $fields['eg_menu_item_class_text'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Menu Item Class'))
+      ->setDescription(t('Add Menu Item Class '))
+      ->setDisplayOptions('form',array('type' => 'string', 'weight' => 0));
+
+    $fields['eg_menu_item_description_text'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Menu Item Decription'))
+      ->setDescription(t('Add Menu Item Decription '))
+      ->setDisplayOptions('form',array('type' => 'string', 'weight' => 0));
+  };
+
+  return $fields;
+}
+
+
